@@ -5,25 +5,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
+    height: 100vh;
 }
 .container {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     text-align: center;
 }
 h1 {
     color: #007BFF;
 }
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 input[type="text"] {
-    width: calc(100% - 22px);
+    flex: 1;
     padding: 10px;
-    margin: 10px 0;
+    margin-right: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -39,10 +45,25 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-p {
+#conversation {
     background-color: #f9f9f9;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    min-height: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    text-align: left;
+}
+p {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.user-question {
+    background-color: #e0f7fa;
+    border: 1px solid #007BFF;
+}
+.bot-answer {
+    background-color: #ffebee;
+    border: 1px solid #e57373;
 }
