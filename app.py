@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import openai
 
 app = Flask(__name__)
-
+sss
 # 추가 자료 설정
 extra_context = """
 1. 대학 입학 정보:
