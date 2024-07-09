@@ -8,14 +8,33 @@
 </head>
 <body>
     <header>
-        <h1>물어볼건양</h1>
+        <div class="header-container">
+            <div class="mobile_btn">
+                <input type="checkbox" id="hamburger" />
+                <label for="hamburger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </label>
+                <div class="sidebar">
+                    <h2 style="text-align: center; position: relative; top: 75px;"><a href="#">로고</a></h2>
+                    <hr style="position: relative; top:100px; border: solid 1px black;">
+                    <ul class="nav_mobile">
+                        <li><a href="#">메뉴1</a></li>
+                        <li><a href="#">메뉴2</a></li>
+                        <li><a href="#">메뉴3</a></li>
+                        <li><a href="#">메뉴4</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h1>물어볼건양</h1>
+        </div>
         <div class="container">
             <div id="conversation"></div>
             <div class="input-container">
                 <input type="text" id="question" placeholder="질문을 입력하세요">
                 <button type="button" onclick="askQuestion()">⬆</button>
             </div>
-            
         </div>
     </header>     
     <script>
