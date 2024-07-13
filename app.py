@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from openai import OpenAI
 
-client = OpenAI(api_key='sk-proj-2EkshLNgOj92jjI8Kk9LT3BlbkFJBezMAm0bBFzHWkLChDhL')
+
 
 app = Flask(__name__)
 
 # OpenAI API 키 설정
 
 # 맞춤형 Assistant ID 설정
-assistant_id = 'vs_UMtRqwvFgWR98aySzyL3AAZ6'  # OpenAI 콘솔에서 생성한 Assistant ID로 대체
-
 # extra_context 파일 읽어오기
 with open('extra_context.txt', 'r', encoding='utf-8') as file:
     extra_context = file.read()
