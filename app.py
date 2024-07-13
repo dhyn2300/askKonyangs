@@ -22,12 +22,12 @@ def get_response(prompt, assistant_id, extra_context):
                 {"role": "system", "content": extra_context},
                 {"role": "user", "content": prompt}
             ],
-            user=assistant_id  # 맞춤형 Assistant ID 사용
+            user=assistant_id 
         )
         return response.choices[0].message.content
     except Exception as e:
-        print(f"Error: {e}")  # 오류 로그 추가
-        return str(e)  # 오류 메시지를 직접 반환
+        print(f"Error: {e}")  
+        return str(e) 
 
 @app.route("/", methods=["GET"])
 def home():
