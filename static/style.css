@@ -1,231 +1,162 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background: #729762;
+    background-blend-mode: multiply;
+    color: #f0f0f0;
+    margin: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    height: 100vh;
+}
+
+header {
+    background-color: #597445;
+    color: white;
+    padding: 4px;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .header-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
     width: 100%;
-    padding: 20px;
+    overflow: hidden;
 }
 
-.mobile_btn {
-    margin-right: 10px;
-}
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+#conversation {
+    background-color: #E7F0DC;
+    padding: 30px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
     width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-h1 {
-    color: #007BFF;
+    height: calc(100% - 120px);
+    overflow-y: auto;
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .input-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid #E7F0DC;
+    border-radius: 10px;
+    background-color: #E7F0DC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    flex-shrink: 0;
 }
 
 input[type="text"] {
     flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 20px;
+    margin-right: 20px;
+    border: 1.5px solid #597445;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    background-color: #E7F0DC;
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #597445;
     color: white;
-    padding: 10px;
+    padding: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #729762;
 }
 
-#conversation {
-    background-color: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    height: 500px;
-    overflow-y: auto;
-    text-align: left;
-}
-
-p {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+.message {
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    color: black;
 }
 
 .user-question {
-    background-color: #e0f7fa;
-    border: 1px solid #007BFF;
+    background-color: E7F0DC;
+    border: 2px solid #658147;
+    align-self: flex-end;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.bot-answer-container {
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+    align-self: flex-start;
+}
+
+.bot-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
 }
 
 .bot-answer {
-    background-color: #ffebee;
-    border: 1px solid #e57373;
-}
-
-a {
-    text-decoration: none;
+    background-color: E7F0DC;
+    border: 2px solid #658147;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.8rem;
     color: black;
 }
 
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+@media (max-width: 768px) {
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-}
+    input[type="text"] {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
 
-.mobile_btn {
-    position: relative;
-}
+    button {
+        width: 100%;
+    }
 
-input[id="hamburger"] {
-    display: none;
-}
+    .message {
+        max-width: 100%;
+    }
 
-input[id="hamburger"] + label {
-    display: block;
-    width: 20px;
-    height: 15px;
-    position: relative;
-    cursor: pointer;
-}
+    .bot-answer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-input[id="hamburger"] + label span {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2.5px;
-    border-radius: 30px;
-    background: #000;
-    transition: all 0.35s;
-}
-
-input[id="hamburger"] + label span:nth-child(1) {
-    top: 0;
-}
-
-input[id="hamburger"] + label span:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-input[id="hamburger"] + label span:nth-child(3) {
-    bottom: 0;
-}
-
-input[id="hamburger"]:checked + label {
-    z-index: 99;
-}
-
-input[id="hamburger"]:checked + label span {
-    background: black;
-}
-
-input[id="hamburger"]:checked + label span:nth-child(1) {
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-}
-
-input[id="hamburger"]:checked + label span:nth-child(2) {
-    opacity: 0;
-}
-
-input[id="hamburger"]:checked + label span:nth-child(3) {
-    bottom: 50%;
-    transform: translateY(50%) rotate(-45deg);
-}
-
-div[class="sidebar"] {
-    width: 100%;
-    height: 100%;
-    background: white;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    z-index: 98;
-    transition: all 0.35s;
-}
-
-input[id="hamburger"]:checked + label + div {
-    left: 0;
-}
-
-.nav_mobile {
-    position: absolute;
-    top: 119px;
-    width: 100%;
-}
-
-.sidebar .nav_mobile li {
-    color: black;
-    position: relative;
-    float: left;
-    width: 100%;
-    list-style-type: none;
-    font-size: 20px;
-    border-bottom: 1px solid #ccc;
-    font-family: 'Noto Sans KR';
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-}
-
-.sidebar a {
-    padding: 0;
-    text-decoration: none;
-    display: block;
-}
-
-.sidebar li a {
-    display: block;
-    font-weight: bold;
-    line-height: 40px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.4s;
-}
-
-.sidebar li a:hover,
-.sidebar ul li:hover a {
-    text-decoration: none;
-    color: #eee;
-    padding: 0;
-    margin: 0;
-    border: 0;
+    .bot-image {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
