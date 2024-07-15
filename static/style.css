@@ -29,7 +29,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
     box-sizing: border-box;
     width: 100%;
     overflow: hidden;
@@ -93,9 +93,9 @@ button:hover {
     display: flex;
     align-items: center;
     max-width: 60%;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: black;
 }
 
@@ -124,9 +124,9 @@ button:hover {
 .bot-answer {
     background-color: E7F0DC;
     border: 2px solid #658147;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: black;
 }
 
