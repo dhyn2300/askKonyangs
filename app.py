@@ -3,7 +3,9 @@ from werkzeug.utils import secure_filename
 import os
 import time
 from openai import OpenAI
+
 client = OpenAI(api_key='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')
+
 app = Flask(__name__)
 
 def create_assistant():
@@ -85,3 +87,7 @@ def ask():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+print("안녕하세요")
+print("좋은 하루 보내세요")
+print("아프지 않고 건강하게")
