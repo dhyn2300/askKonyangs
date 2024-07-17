@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 import time
 from openai import OpenAI
-client = OpenAI(api_key='')
+client = OpenAI(api_key='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')
 app = Flask(__name__)
 
 def create_assistant():
