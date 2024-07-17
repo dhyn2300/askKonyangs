@@ -3,7 +3,7 @@ body {
     background: #729762;
     background-blend-mode: multiply;
     color: #f0f0f0;
-    margin: 00;
+    margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
