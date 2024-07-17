@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물어볼건양</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="title">물어볼건양</h1>
+        </div>
+    </header>
+    <div class="main-content">
+        <div id="conversation"></div>
+        <div class="input-container">
+            <input type="text" id="question" placeholder="질문을 입력하세요">
+            <button type="button" onclick="askQuestion()">⬆</button>
+        </div>
+    </div>
+    <script>
+        async function askQuestion() {
+            const question = document.getElementById('question').value;
+            if (question.trim() === '') return;
+
+            const conversationDiv = document.getElementById('conversation');
+            const userQuestion = document.createElement('div');
+            userQuestion.className = 'user-question message';
+            userQuestion.innerText = `${question}`;
+            conversationDiv.appendChild(userQuestion);
+
+            document.getElementById('question').value = '';
+
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question: question })
+            });
+
+            const data = await response.json();
+
+            const botAnswerContainer = document.createElement('div');
+            botAnswerContainer.className = 'bot-answer-container';
+
+            const botImage = document.createElement('img');
+            botImage.src = '/static/bot-image.png';  // 이미지 경로를 로컬 파일로 설정
+            botImage.className = 'bot-image';
+            botImage.alt = 'Bot Image';  // 이미지 대체 텍스트 추가
+
+            const botAnswer = document.createElement('div');
+            botAnswer.className = 'bot-answer message';
+            botAnswer.innerText = `${data.answer || data.error}`;
+
+            botAnswerContainer.appendChild(botImage);
+            botAnswerContainer.appendChild(botAnswer);
+            
+            conversationDiv.appendChild(botAnswerContainer);
+
+            conversationDiv.scrollTop = conversationDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>
