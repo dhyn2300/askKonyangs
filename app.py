@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, jsonify
-from werkzeug.utils import secure_filename
 import os
 import time
-from openai import OpenAI
+from openai import OpenAI, Configuration
 
 app = Flask(__name__)
 
+# OpenAI 클라이언트 설정
+
 def create_assistant():
     global assistant_id
-    if assistant_id == "":
+    if not assistant_id:
         my_assistant = client.beta.assistants.create(
             instructions="You are a helpful assistant. If asked about math or computing problems, write and run code to answer the question.",
             name="MyQuickstartAssistant",
@@ -18,18 +19,15 @@ def create_assistant():
         assistant_id = my_assistant.id
     else:
         my_assistant = client.beta.assistants.retrieve(assistant_id)
-        assistant_id = my_assistant.id
     return my_assistant
 
 def create_thread():
     global thread_id
-    if thread_id == "":
+    if not thread_id:
         thread = client.beta.threads.create()
         thread_id = thread.id
     else:
         thread = client.beta.threads.retrieve(thread_id)
-        thread_id = thread.id
-
     return thread
 
 def file_search_ky():
@@ -40,15 +38,8 @@ def file_search_ky():
         tool_resources={"file_search": {"vector_store_ids": ['vs_UMtRqwvFgWR98aySzyL3AAZ6']}},
     )
 
-thread_id = ""
-
-chat_history = [
-    {"role": "system", "content": "You are a helpful assistant."},
-]
-
-@app.before_request
+@app.before_first_request
 def initialize():
-    app.before_request_funcs[None].remove(initialize)
     create_assistant()
     create_thread()
     file_search_ky()
@@ -61,7 +52,7 @@ def home():
 def ask():
     data = request.get_json()
     question = data.get("question")
-    print(f"Received question: {question}")  # 로그 추가
+    app.logger.info(f"Received question: {question}")  # 로그 추가
     if question:
         message_params = {"thread_id": thread_id, "role": "user", "content": question}
         thread_message = client.beta.threads.messages.create(**message_params)
@@ -78,7 +69,7 @@ def ask():
                 text_content = content.text.value
                 break  # Exit the loop once the first text content is found
 
-        print(f"Generated answer: {text_content}")  # 로그 추가
+        app.logger.info(f"Generated answer: {text_content}")  # 로그 추가
         return jsonify({"answer": text_content})
     return jsonify({"error": "No question provided"}), 400
 
