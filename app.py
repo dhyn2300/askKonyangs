@@ -3,12 +3,7 @@ import os
 import time
 from openai import OpenAI, Configuration
 
-app = Flask(__name__)
 
-client = OpenAI(api_key='sk-proj-wtIQXSPfoLhe8ZSwHxhiT3BlbkFJjzpIBsC5ibTq7TuWlOAu')
-
-assistant_id = "asst_aUkQNBqjwNpAKs0k39oZLGUd"
-thread_id = ""
 
 # OpenAI 클라이언트 설정
 
