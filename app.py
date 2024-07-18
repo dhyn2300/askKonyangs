@@ -40,7 +40,6 @@ def file_search_ky():
         tool_resources={"file_search": {"vector_store_ids": ['vs_UMtRqwvFgWR98aySzyL3AAZ6']}},
     )
 
-assistant_id = "asst_aUkQNBqjwNpAKs0k39oZLGUd"
 thread_id = ""
 
 chat_history = [
