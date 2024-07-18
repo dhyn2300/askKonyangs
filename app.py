@@ -4,7 +4,7 @@ import os
 import time
 from openai import OpenAI
 
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='sk-proj-wtIQXSPfoLhe8ZSwHxhiT3BlbkFJjzpIBsC5ibTq7TuWlOAu')
 
 app = Flask(__name__)
 
