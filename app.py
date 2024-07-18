@@ -4,7 +4,7 @@ import time
 from openai import OpenAI, Configuration
 
 app = Flask(__name__)
-
+client = OpenAI(api_key='OPENAI_API_KEY')
 # OpenAI 클라이언트 설정
 
 def create_assistant():
